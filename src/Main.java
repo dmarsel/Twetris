@@ -8,10 +8,9 @@ public class Main {
         Point p = v.toPoint();
         v.print();
         p.print();
-        v.zoom(5);
+        v=v.times(5);
         v.print();
-        System.out.println(v.x);
-        System.out.println(v.toString());
+
     }
 
 }
