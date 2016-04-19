@@ -1,54 +1,59 @@
 /**
  * Created by Лицей-интернат №2 on 15.04.2016.
  */
-public class Vector{
+public class Vector {
     private int x;
     private int y;
 
-    public Vector (double x, double y){
-        this.x = (int)x;
-        this.y = (int)y;
+
+
+
+    public Vector(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public Vector (){
+    public Vector() {
         this.x = 0;
         this.y = 0;
     }
 
-    public Vector (Point a,Point b){
-        this.x=b.getX()-a.getX();
-        this.y=b.getY()-a.getY();
+    public Vector(Point a, Point b) {
+        this.x = b.getX() - a.getX();
+        this.y = b.getY() - a.getY();
     }
 
-    public int getX(){
-        return this.x;
+
+    public int getX() {
+        return x;
     }
 
-    public int getY(){
-        return this.y;
+    public int getY() {
+        return y;
     }
 
-    public void setX(double x){
-        this.x = (int)x;
+    public void setX(int x) {
+        this.x = x;
     }
 
-    public void setY(double y){
-        this.y = (int)y;
+    public void setY(int y) {
+        this.y = y;
     }
 
-    public void set(double x, double y){
-        this.x = (int)x;
-        this.y = (int)y;
+    public void set(int x, int y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public Vector rotate(double a){
-        int c = this.x;
-        int d = this.y;
-        return new Vector(c*Math.cos(a)-d*Math.sin(a),c*Math.sin(a)+d*Math.cos(a));
-        }
+    public void rotate(double a) {
+        int c = x;
+        int d = y;
+        x = (int) (c * Math.cos(a) - d * Math.sin(a));
+        y = (int) (c * Math.sin(a) + d * Math.cos(a));
+    }
 
-    public double length(){
-        return Math.sqrt(this.x*this.x+this.y*this.y);
+    public double length() {
+        return Math.sqrt(x * x + y * y);
     }
 
     /*
@@ -58,30 +63,33 @@ public class Vector{
     }*/
 
     //* метод приьавляет к данному вектору вектор v
-       public Vector add(Vector v){
-        return new Vector(this.x+v.x,this.y+v.y);
+    public void add(Vector v) {
+        x += v.x;
+        y += v.y;
     }
 
     //* метод выдает точку радиус-вектора
-    public Point toPoint(){
-        return new Point(this.x,this.y);
+    public Point toPoint() {
+        return new Point(x, y);
     }
 
     //*метод выдает обратный вектор
-    public Vector back(){
-        return new Vector(-this.x,-this.y);
+    public void back() {
+        x = -x;
+        y = -y;
     }
 
     //* метод увеличивает вектор в k раз
-    public Vector times(int k){
-        return new Vector(this.x*k,this.x*k);
+    public void times(int k) {
+        x = x * k;
+        y = y * k;
     }
 
-    public  String toString(){
-        return "вектор {"+this.x+";"+this.y+"}";
+    public String toString() {
+        return "вектор {" + x + ";" + y + "}";
     }
 
-    public void print(){
+    public void print() {
         System.out.println(this.toString());
     }
 

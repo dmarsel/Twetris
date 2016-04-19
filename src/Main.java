@@ -8,7 +8,7 @@ public class Main {
         Point p = v.toPoint();
         v.print();
         p.print();
-        v=v.times(5);
+        v.times(5);
         v.print();
 
     }
