@@ -5,7 +5,7 @@ public class Vector {
     private int x;
     private int y;
 
-
+static Vector test = new Vector(3,7);
 
 
     public Vector(int x, int y) {
@@ -48,8 +48,8 @@ public class Vector {
     public void rotate(double a) {
         int c = x;
         int d = y;
-        x = (int) (c * Math.cos(a) - d * Math.sin(a));
-        y = (int) (c * Math.sin(a) + d * Math.cos(a));
+        x = (int) Math.round(c * Math.cos(a) - d * Math.sin(a));
+        y = (int) Math.round(-c * Math.sin(a) - d * Math.cos(a));
     }
 
     public double length() {

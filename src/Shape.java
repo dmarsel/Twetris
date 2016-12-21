@@ -4,18 +4,25 @@
 public abstract class Shape {
     Point center;
     int angle;
-    protected final int sideLength=20;
+    /*длину стороны, работая с int, нужно брать ЧЁТНОЙ!!!*/
+    static int sideLength=40;
     
-    final Vector[] sides;
-    
-    Shape() {
+    private static Vector[] sides;
+
+    /*задаём направления сторон многоугольников*/
+    static {
         sides = new Vector[12];
         for (int i = 0; i < 12; i++) {
-            Vector v = new Vector(1, 0);
-            v.times(sideLength);
-            v.rotate(Math.PI * i / 12);
+            Vector v = new Vector(sideLength, 0);
+            v.rotate(Math.PI *i / 6);
             sides[i] = v;
-        }
+        }}
+
+    /*Возвращает вектор направления */
+    public static Vector getSide(int i) {
+        return sides[i%12];
+    }
+    Shape() {
     }
 
    // abstract public void draw();

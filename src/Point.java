@@ -2,8 +2,8 @@
  * Created by Лицей-интернат №2 on 15.04.2016.
  */
 public class Point extends Vector {
-    private int x;
-    private int y;
+    int x;
+    int y;
 
     public Point(int x, int y) {
         this.x =  x;
@@ -14,6 +14,12 @@ public class Point extends Vector {
         this.x = 0;
         this.y = 0;
     }
+
+    public Point(Point p) {
+        this.x = p.x;
+        this.y = p.y;
+    }
+
 
     //* поворот точки на угол a вокруг точки p
     public void rotate(Point p, double a) {
@@ -29,6 +35,10 @@ public class Point extends Vector {
 
         this.x = x + this.x;
         this.y += y;
+    }
+
+    public void move(Vector v) {
+        this.move(v.getX(),v.getY());
     }
 
     // сдвигает точку на вектор p
