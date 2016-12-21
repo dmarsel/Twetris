@@ -1,6 +1,9 @@
 /**
  * Created by Лицей-интернат №2 on 15.04.2016.
  */
+
+import java.awt.*;
+
 public abstract class Shape {
     Point center;
     int angle;
@@ -24,6 +27,8 @@ public abstract class Shape {
     }
     Shape() {
     }
+    void drawOn(Graphics g){}
+
 
    // abstract public void draw();
    // abstract public void rotate();

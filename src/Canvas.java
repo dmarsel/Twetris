@@ -32,7 +32,10 @@ public class Canvas extends JComponent{
         int[] arrayX = {p1.x, p2.x, p3.x,p4.x};
         int[] arrayY = {p1.y, p2.y, p3.y,p4.y};
         Polygon pol = new Polygon(arrayX, arrayY, 4);
+        Graphics2D g2d=(Graphics2D)g;
+        g2d.setPaint(Color.RED);
         g.fillPolygon(pol);
+        g2d.setPaint(Color.BLACK);
         g.drawPolygon(pol);    }
 
     /* 	Рисует текущим цветом ромб	*/
@@ -47,8 +50,17 @@ public class Canvas extends JComponent{
         int[] arrayX = {p1.x, p2.x, p3.x,p4.x};
         int[] arrayY = {p1.y, p2.y, p3.y,p4.y};
         Polygon pol = new Polygon(arrayX, arrayY, 4);
+        Graphics2D g2d=(Graphics2D)g;
+        g2d.setPaint(Color.GREEN);
         g.fillPolygon(pol);
+        g2d.setPaint(Color.BLACK);
         g.drawPolygon(pol);    }
+
+    void drawOn(Shape[] s,Graphics g){
+        for (int i = 0; i < s.length; i++) {
+            s[i].drawOn(g);
+        }
+    }
 
 
 
@@ -80,16 +92,21 @@ public class Canvas extends JComponent{
         g2d.setColor(Color.blue);
 
         Triangle tr = new Triangle(0,100,200);
-        drawTriangle(tr,g);
+        //tr.drawOn(g);
 
-        g2d.setPaint(Color.RED);
-        Square s = new Square(1,200,100);
-        drawSquare(s,g);
+       // g2d.setPaint(Color.RED);
+        Square s = new Square(3,150,150);
+        //s.drawOn(g);
 
 /* 	Устанавливает цвет рисования в зелёный*/
-        g2d.setPaint(Color.GREEN);
-        Diamond d = new Diamond(2,150,150);
-        drawDiamond(d,g);
+       // g2d.setPaint(Color.GREEN);
+        Diamond d = new Diamond(0,150,150);
+        Diamond d1 = new Diamond(1,150,150);
+        Diamond d2 = new Diamond(2,150,150);
+        //d.drawOn(g);
+
+        Shape[] sh={tr,s,d,d1,d2};
+        drawOn(sh,g);
 
 
      /* int[] arrayX = {20, 100, 100, 250, 250, 20, 20, 200};
