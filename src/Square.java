@@ -5,10 +5,6 @@
 import java.awt.*;
 
 public class Square extends Shape{
-    /*задает первый вектор направления*/
-    int angle;
-    /*задает первую точку*/
-    Point firstPoint;
 
     public Square (int i, Point p){
         int angle;
@@ -21,8 +17,10 @@ public class Square extends Shape{
         firstPoint = p;
     }
 
-    /* 	Рисует красный квадрат с черной обводкой	*/
-    void drawOn(Graphics g){ Point p1 = new Point(this.firstPoint);
+    /* представляет Square в виде Polygon */
+
+    public Polygon toPolygon() {
+        Point p1 = new Point(this.firstPoint);
         Point p2 = new Point(this.firstPoint);
         p2.move(Shape.getSide(this.angle));
         Point p4 = new Point(this.firstPoint);
@@ -32,6 +30,13 @@ public class Square extends Shape{
         int[] arrayX = {p1.x, p2.x, p3.x,p4.x};
         int[] arrayY = {p1.y, p2.y, p3.y,p4.y};
         Polygon pol = new Polygon(arrayX, arrayY, 4);
+        return pol;
+    }
+
+
+    /* 	Рисует красный квадрат с черной обводкой	*/
+    void drawOn(Graphics g){
+        Polygon pol = this.toPolygon();
         Graphics2D g2d=(Graphics2D)g;
         g2d.setPaint(Color.RED);
         g.fillPolygon(pol);

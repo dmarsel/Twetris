@@ -5,8 +5,10 @@
 import java.awt.*;
 
 public abstract class Shape {
-    Point center;
+    /*задает первый вектор направления*/
     int angle;
+    /*задает первую точку*/
+    Point firstPoint;
     /*длину стороны, работая с int, нужно брать ЧЁТНОЙ!!!*/
     static int sideLength=40;
     
@@ -28,6 +30,24 @@ public abstract class Shape {
     Shape() {
     }
     void drawOn(Graphics g){}
+
+
+    /* представляет Shape в виде Polygon */
+    public Polygon toPolygon() {
+
+        Polygon pol = new Polygon();
+        return pol;
+    }
+
+    /*проверяет содержание Point внутри Shape*/
+    public boolean contains(Point p){
+        return this.contains(p.getX(),p.getY());}
+
+
+    /*проверяет содержание точки из двух координат внутри Shape*/
+    public boolean contains(double x, double y){
+        Polygon pol = this.toPolygon();
+        return pol.contains(x,y);}
 
 
    // abstract public void draw();

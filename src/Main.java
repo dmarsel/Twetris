@@ -14,11 +14,6 @@ public class Main {
             Shape.getSide(i).print();
         }
 
-        Triangle tr = new Triangle(0,100,200);
-        Point p = tr.firstPoint;
-        p.move(Shape.getSide(tr.angle+2));
-        System.out.println(p.toString());
-
         /* Задание заголовка окна*/
         JFrame w=new JFrame("Окно с изображением");
 	/*Задание размеров окна*/
