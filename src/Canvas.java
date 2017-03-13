@@ -10,10 +10,10 @@ import java.util.ArrayList;
 import javax.swing.*;
 
 public class Canvas extends JComponent implements MouseListener, MouseMotionListener{
-    private int xPosition, yPosition;
+    int xPosition, yPosition;
     private boolean drag;
     public  int activeShapeNumber = -1;
-
+    public static ArrayList<Shape> ShapeList = new ArrayList<>();
 
 
 	public Canvas() {
@@ -34,11 +34,12 @@ public class Canvas extends JComponent implements MouseListener, MouseMotionList
     }
 
     public  void contains(ArrayList<Shape> s,Point p){
+        //activeShapeNumber=-1;
         for (int i = 0; i < s.size(); i++) {
             Shape t = s.get(i);
             if(t.contains(p)){
-                System.out.println("Да");
                 activeShapeNumber=i;}
+
         }
 
     }
@@ -62,14 +63,15 @@ public class Canvas extends JComponent implements MouseListener, MouseMotionList
    // Shape[] sh = {tr, s, d, d1, d2};
 //        drawOn(sh,g);
 
-    public static ArrayList<Shape> ShapeList = new ArrayList<>();
+    {
 
-    //Добавим фигуры к списку
+
+        //Добавим фигуры к списку
         ShapeList.add(tr);
         ShapeList.add(s);
         ShapeList.add(d);
         ShapeList.add(new Diamond(1, 150, 150));
-
+    }
 
 
 
@@ -103,7 +105,10 @@ public class Canvas extends JComponent implements MouseListener, MouseMotionList
 
         @Override
         public void mouseDragged (MouseEvent e){
-            // TODO Auto-generated method stub
+            if(drag) {
+                ShapeList.get(activeShapeNumber).firstPoint.setX(e.getX()-xPosition);
+                ShapeList.get(activeShapeNumber).firstPoint.setY(e.getY()-yPosition);
+            }
 
         }
 
@@ -125,12 +130,22 @@ public class Canvas extends JComponent implements MouseListener, MouseMotionList
             Point p = new Point(xPosition, yPosition);
             contains(ShapeList, p);
             System.err.println("На канве тыкнули в точку (" + e.getX() + ", " + e.getY() + "). Она лежит в фигуре" + activeShapeNumber);
-            System.err.println("всего "+ShapeList.size()+"фигур");
+            if(activeShapeNumber>-1){
+                drag = true;
+
+                Shape dragged = ShapeList.get(activeShapeNumber);
+                xPosition = e.getX()-dragged.firstPoint.getX();
+                yPosition = e.getY()-dragged.firstPoint.getY();
+
+
+
+            }
+
         }
 
         @Override
         public void mouseReleased (MouseEvent e){
-            // TODO Auto-generated method stub
+            drag = false;
 
         }
 
