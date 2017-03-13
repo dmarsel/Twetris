@@ -17,8 +17,8 @@ public class Square extends Shape{
         firstPoint = p;
     }
 
-    /* представляет Square в виде Polygon */
-
+    /** представляет Square в виде Polygon */
+    @Override
     public Polygon toPolygon() {
         Point p1 = new Point(this.firstPoint);
         Point p2 = new Point(this.firstPoint);
@@ -34,7 +34,8 @@ public class Square extends Shape{
     }
 
 
-    /* 	Рисует красный квадрат с черной обводкой	*/
+    /** 	Рисует красный квадрат с черной обводкой	*/
+    @Override
     void drawOn(Graphics g){
         Polygon pol = this.toPolygon();
         Graphics2D g2d=(Graphics2D)g;

@@ -17,8 +17,8 @@ public class Triangle extends Shape {
         firstPoint = p;
     }
 
-    /* представляет Triangle в виде Polygon */
-
+    /** представляет Triangle в виде Polygon */
+    @Override
     public Polygon toPolygon() {
         Point p1 = new Point(this.firstPoint);
         Point p2 = new Point(this.firstPoint);
@@ -31,7 +31,9 @@ public class Triangle extends Shape {
         return pol;
     }
 
-    /* 	Рисует синий треугольник с черной обводкой	*/
+
+    /** 	Рисует синий треугольник с черной обводкой	*/
+    @Override
     void drawOn(Graphics g){
         Polygon pol = this.toPolygon();
         Graphics2D g2d=(Graphics2D)g;

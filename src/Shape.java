@@ -15,7 +15,7 @@ public abstract class Shape {
     private static Vector[] sides;
 
     /*задаём направления сторон многоугольников*/
-    static {
+     static {
         sides = new Vector[12];
         for (int i = 0; i < 12; i++) {
             Vector v = new Vector(sideLength, 0);
@@ -33,11 +33,7 @@ public abstract class Shape {
 
 
     /* представляет Shape в виде Polygon */
-    public Polygon toPolygon() {
-
-        Polygon pol = new Polygon();
-        return pol;
-    }
+    abstract Polygon toPolygon();
 
     /*проверяет содержание Point внутри Shape*/
     public boolean contains(Point p){

@@ -2,8 +2,8 @@
  * Created by Лицей-интернат №2 on 15.04.2016.
  */
 public class Vector {
-    private int x;
-    private int y;
+    int x;
+    int y;
 
 static Vector test = new Vector(3,7);
 

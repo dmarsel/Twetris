@@ -2,12 +2,19 @@
  * Created by Лицей-интернат №2 on 15.04.2016.
  */
 public class Point extends Vector {
-    int x;
-    int y;
+
 
     public Point(double x, double y) {
         this.x =  (int) x;
         this.y =  (int) y;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
     }
 
     public Point() {

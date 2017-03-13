@@ -18,8 +18,8 @@ public class Diamond extends Shape{
     }
 
 
-    /* представляет Diamond в виде Polygon */
-
+    /** представляет Diamond в виде Polygon */
+    @Override
     public Polygon toPolygon() {
         Point p1 = new Point(this.firstPoint);
         Point p2 = new Point(this.firstPoint);
@@ -34,7 +34,8 @@ public class Diamond extends Shape{
         return pol;
     }
 
-    /* 	Рисует зеленый ромб с черной обводкой	*/
+    /** 	Рисует зеленый ромб с черной обводкой	*/
+    @Override
     void drawOn(Graphics g){
         Polygon pol = this.toPolygon();
         Graphics2D g2d=(Graphics2D)g;
