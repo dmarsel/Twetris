@@ -24,11 +24,25 @@ public class Triangle extends Shape {
         Point p2 = new Point(this.firstPoint);
         p2.move(Shape.getSide(this.angle));
         Point p3 = new Point(this.firstPoint);
-        p3.move(Shape.getSide(this.angle+2));
+        p3.move(Shape.getSide((this.angle+2)%12));
         int[] arrayX = {p1.x, p2.x, p3.x};
         int[] arrayY = {p1.y, p2.y, p3.y};
         Polygon pol = new Polygon(arrayX, arrayY, 3);
         return pol;
+    }
+
+    @Override
+    public void rotate(int i) {
+        Point p = new Point(this.firstPoint);
+        Vector v =new Vector();
+        v.add(Shape.getSide((this.angle+1)%12));
+        v.times(1/Math.sqrt(3));
+        p.move(v);
+        v.rotate(Math.PI *i / 6);
+        v.back();
+        p.move(v);
+        firstPoint=p;
+        angle=(angle-i+12)%12;
     }
 
 

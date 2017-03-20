@@ -6,10 +6,12 @@ import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseMotionListener;
+import java.awt.event.MouseWheelEvent;
+import java.awt.event.MouseWheelListener;
 import java.util.ArrayList;
 import javax.swing.*;
 
-public class Canvas extends JComponent implements MouseListener, MouseMotionListener{
+public class Canvas extends JComponent implements MouseListener, MouseMotionListener,MouseWheelListener  {
     int xPosition, yPosition;
     private boolean drag;
     public  int activeShapeNumber = -1;
@@ -19,7 +21,10 @@ public class Canvas extends JComponent implements MouseListener, MouseMotionList
 	public Canvas() {
 		addMouseListener(this);
 		addMouseMotionListener(this);
+        addMouseWheelListener(this);
 	}
+
+
 
     void drawOn(Shape[] s,Graphics g){
         for (int i = 0; i < s.length; i++) {
@@ -123,22 +128,34 @@ public class Canvas extends JComponent implements MouseListener, MouseMotionList
             // TODO Auto-generated method stub
         }
 
+         @Override
+         public void mouseWheelMoved(MouseWheelEvent e) {
+             if(drag) {
+                 //int r = (e.getWheelRotation());
+                 //ShapeList.get(activeShapeNumber).rotate(r);
+                 int r = (e.getWheelRotation()+ShapeList.get(activeShapeNumber).angle+12)%12;
+                 ShapeList.get(activeShapeNumber).angle=r;
+                 System.err.println("r=" + r);
+
+             }
+
+          }
+
+
+
         @Override
         public void mousePressed (MouseEvent e){
             xPosition = e.getX();
             yPosition = e.getY();
             Point p = new Point(xPosition, yPosition);
             contains(ShapeList, p);
-            System.err.println("На канве тыкнули в точку (" + e.getX() + ", " + e.getY() + "). Она лежит в фигуре" + activeShapeNumber);
+            //System.err.println("На канве тыкнули в точку (" + e.getX() + ", " + e.getY() + "). Она лежит в фигуре" + activeShapeNumber);
             if(activeShapeNumber>-1){
                 drag = true;
 
                 Shape dragged = ShapeList.get(activeShapeNumber);
                 xPosition = e.getX()-dragged.firstPoint.getX();
                 yPosition = e.getY()-dragged.firstPoint.getY();
-
-
-
             }
 
         }

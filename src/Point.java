@@ -23,6 +23,12 @@ public class Point extends Vector {
         this.y = 0;
     }
 
+    public Point middle(Point a, Point b) {
+
+        return new Point((a.x+b.x)/2,(a.y+b.y)/2);
+
+    }
+
     public Point(Point p) {
         this.x = p.x;
         this.y = p.y;

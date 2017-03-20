@@ -47,5 +47,5 @@ public abstract class Shape {
 
 
    // abstract public void draw();
-   // abstract public void rotate();
+    abstract public void rotate(int i);
 }

@@ -8,9 +8,9 @@ public class Vector {
 static Vector test = new Vector(3,7);
 
 
-    public Vector(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Vector(double x, double y) {
+        this.x = (int)x;
+        this.y = (int)y;
     }
 
     public Vector() {
@@ -80,9 +80,9 @@ static Vector test = new Vector(3,7);
     }
 
     //* метод увеличивает вектор в k раз
-    public void times(int k) {
-        x = x * k;
-        y = y * k;
+    public void times(double k) {
+        x = (int)(x * k);
+        y = (int)(y * k);
     }
 
     public String toString() {
